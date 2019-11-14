@@ -39,12 +39,12 @@
 /* Pixels design */
 
 .empty {
-    background-color: black;
+    background-color: green;
 }
 
 .plain {
-    background-color: greenyellow;
-    color: greenyellow;
+    background-color: black;
+    /*color: black;*/
     font-size: 100%;
 }
 
