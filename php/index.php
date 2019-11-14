@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="game-zone">
+    test
     <script src="../js/drawings.js"></script>
     <script src="../js/app.js"></script>
 </body>
