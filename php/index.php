@@ -9,7 +9,12 @@
 </head>
 <body>
     <div id="game-zone">
-    test
+        <div id="player-zone">
+        </div>
+    </div>
+    <button id="start" type="button">Start</button>
+    <button id="clean" type="button">Clean</button>
+    
     <script src="../js/drawings.js"></script>
     <script src="../js/app.js"></script>
 </body>

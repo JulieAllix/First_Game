@@ -1,9 +1,15 @@
 var drawings = {
     characters: {
-        main: [
-            'x'
-            'x'
-            'x'
+        player: [
+            'xx',
+            'xx',
+            'xx'
         ]
+    },
+    types: {
+        '-': 'empty',
+        'x': 'plain',
+        'o': 'light',
+        '8': 'highlight'
     }
 }
