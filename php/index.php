@@ -24,17 +24,19 @@
         var ballRadius = 10;
         var randomColor = "#0095DD";
         var paddleHeight = 15;
-        var paddleWidth = 80;
+        var paddleWidth = 150;
         var paddleX = (canvas.width-paddleWidth) / 2;
         var rightPressed = false;
         var leftPressed = false;
-        var brickRowCount = 3;
+        var brickRowCount = 1;
         var brickColumnCount = 5;
         var brickWidth = 75;
         var brickHeight = 20;
         var brickPadding = 10;
         var brickOffsetTop = 30;
         var brickOffsetLeft = 30;
+        var score = 0;
+        var scorePerHit = 10;
 
         // initialize the bricks
         var bricks = [];
@@ -44,6 +46,55 @@
                 bricks[c][r] = { x: 0, y: 0, status: 1 };
             }
         }
+
+        document.addEventListener("keydown", keyDownHandler, false);
+        document.addEventListener("keyup", keyUpHandler, false);
+
+        function keyDownHandler(e) {
+            if(e.key == "Right" || e.key == "ArrowRight") {
+                rightPressed = true;
+            }
+            else if(e.key == "Left" || e.key == "ArrowLeft") {
+                leftPressed = true;
+            }
+        };
+
+        function keyUpHandler(e) {
+            if(e.key == "Right" || e.key == "ArrowRight") {
+                rightPressed = false;
+            }
+            else if(e.key == "Left" || e.key == "ArrowLeft") {
+                leftPressed = false;
+            }
+        };
+
+        function collisionDetection() {
+            for(var c=0; c<brickColumnCount; c++) {
+                for(var r=0; r<brickRowCount; r++) {
+                    var b = bricks[c][r];
+                    /* if the brick is active (its status is 1) we will check whether the collision happens; if a collision does occur:
+                    - we'll change the direction of the ball;
+                    - we'll set the status of the given brick to 0 so it won't be painted on the screen;
+                    - we'll change the color of the ball;
+                    - we'll add 1pt to the score;
+                    */
+                    if(b.status == 1) {
+                        if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        randomColor = getRandomColor();
+                        score = score + scorePerHit;
+                        /* if all available points have been collected, we will display a winning message */
+                            if(score == brickRowCount*brickColumnCount*scorePerHit) {
+                                alert("YOU WIN, CONGRATULATIONS! Total points : " + score);
+                                document.location.reload();
+                                clearInterval(interval); // Needed for Chrome to end game
+                            }
+                        }
+                    }
+                }
+            }
+        };
 
         function drawBall(color) {
             ctx.beginPath();
@@ -87,7 +138,9 @@
             drawBricks();
             drawBall(randomColor);
             drawPaddle();
+            drawScore();
             collisionDetection();
+            
             x += dx;
             y += dy;
 
@@ -111,13 +164,13 @@
             }
 
             if(rightPressed) {
-                paddleX += 20;
+                paddleX += 15;
                 if (paddleX + paddleWidth > canvas.width){
                     paddleX = canvas.width - paddleWidth;
                 }
             }
             else if(leftPressed) {
-                paddleX -= 20;
+                paddleX -= 15;
                 if (paddleX < 0){
                     paddleX = 0;
                 }
@@ -133,45 +186,14 @@
             return color;
             };
 
-        document.addEventListener("keydown", keyDownHandler, false);
-        document.addEventListener("keyup", keyUpHandler, false);
-
-        function keyDownHandler(e) {
-            if(e.key == "Right" || e.key == "ArrowRight") {
-                rightPressed = true;
-            }
-            else if(e.key == "Left" || e.key == "ArrowLeft") {
-                leftPressed = true;
-            }
-        };
-
-        function keyUpHandler(e) {
-            if(e.key == "Right" || e.key == "ArrowRight") {
-                rightPressed = false;
-            }
-            else if(e.key == "Left" || e.key == "ArrowLeft") {
-                leftPressed = false;
-            }
-        };
-
-        function collisionDetection() {
-            // if the center of the ball is inside the coordinates of one of our bricks, we'll change the direction of the ball.
-            for(var c=0; c<brickColumnCount; c++) {
-                for(var r=0; r<brickRowCount; r++) {
-                    var b = bricks[c][r];
-                    // if the brick is active (its status is 1) we will check whether the collision happens; if a collision does occur we'll set the status of the given brick to 0 so it won't be painted on the screen
-                    if(b.status == 1) {
-                        if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                        dy = -dy;
-                        b.status = 0;
-                        randomColor = getRandomColor();
-                        }
-                    }
-                }
-            }
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: "+score, 8, 20);
         }
-
-        var interval = setInterval(draw, 10);
+        
+        // The speed of the ball can be changed by changing the timer of the interval
+        var interval = setInterval(draw, 15);
     </script>
 </body>
 </html>
