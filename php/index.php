@@ -37,6 +37,7 @@
         var brickOffsetLeft = 30;
         var score = 0;
         var scorePerHit = 10;
+        var lives = 3;
 
         // initialize the bricks
         var bricks = [];
@@ -102,7 +103,6 @@
                             if(score == brickRowCount*brickColumnCount*scorePerHit) {
                                 alert("YOU WIN, CONGRATULATIONS! Total points : " + score);
                                 document.location.reload();
-                                clearInterval(interval); // Needed for Chrome to end game
                             }
                         }
                     }
@@ -153,6 +153,7 @@
             drawBall(randomColor);
             drawPaddle();
             drawScore();
+            drawLives();
             collisionDetection();
             
             x += dx;
@@ -171,9 +172,18 @@
                     dy = -dy * 1.1;
                 }
                 else {
-                    alert("GAME OVER");
-                    document.location.reload();
-                    clearInterval(interval);
+                    lives--;
+                    if(!lives) {
+                        alert("GAME OVER");
+                        document.location.reload();
+                    }
+                    else {
+                        x = canvas.width/2;
+                        y = canvas.height-30;
+                        dx = 2;
+                        dy = -2;
+                        paddleX = (canvas.width-paddleWidth)/2;
+                    }
                 }
             }
 
@@ -189,6 +199,7 @@
                     paddleX = 0;
                 }
             };
+        requestAnimationFrame(draw);
         };
 
         function getRandomColor() {
@@ -205,9 +216,15 @@
             ctx.fillStyle = "#0095DD";
             ctx.fillText("Score: "+score, 8, 20);
         }
+
+        function drawLives() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+        }
         
         // The speed of the ball can be changed by changing the timer of the interval
-        var interval = setInterval(draw, 15);
+        draw();
     </script>
 </body>
 </html>
