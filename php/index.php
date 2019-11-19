@@ -25,7 +25,7 @@
         var randomColor = "#0095DD";
         var paddleHeight = 15;
         var paddleWidth = 150;
-        var paddleX = (canvas.width-paddleWidth) / 2;
+        var paddleX = (canvas.width-paddleWidth) /2;
         var rightPressed = false;
         var leftPressed = false;
         var brickRowCount = 1;
@@ -49,6 +49,20 @@
 
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        function mouseMoveHandler(e) {
+            // e.clientX = horizontal mouse position in the viewport
+            // canvas.offsetLeft = distance between the left edge of the canvas and left edge of the viewport
+            // relativeX = distance between the canvas left edge and the mouse pointer
+            var relativeX = e.clientX - canvas.offsetLeft;
+
+            /*If the relative X pointer position is greater than zero and lower than the Canvas width, the pointer is within the Canvas boundaries*/
+            if(relativeX > 0 && relativeX < canvas.width) {
+                // paddleX = position of the paddle (anchored on the left edge of the paddle)
+                paddleX = relativeX - paddleWidth/2;
+            }
+        }
 
         function keyDownHandler(e) {
             if(e.key == "Right" || e.key == "ArrowRight") {
