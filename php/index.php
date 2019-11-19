@@ -4,30 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Casse-moi tout là-dedans !</title>
+    <title>I want to break free</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
     </style>
+    <link rel="stylesheet" href="../css/style.css">
     <!--<link rel="stylesheet" href="../css/style.css">-->
 </head>
 <body>
     <canvas id="myCanvas" width="480" height="320"></canvas>
 
     <script>
+
+        // **************** Variables necessary for the game ****************
+
+        // Canvas
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var x = canvas.width/2;
         var y = canvas.height-30;
         var dx = -3;
         var dy = -1;
+
+        // Ball
         var ballRadius = 10;
         var randomColor = "#0095DD";
+
+        // Paddle
         var paddleHeight = 15;
         var paddleWidth = 150;
         var paddleX = (canvas.width-paddleWidth) /2;
+
+        // Keyboard
         var rightPressed = false;
         var leftPressed = false;
+
+        // Bricks
         var brickRowCount = 1;
         var brickColumnCount = 5;
         var brickWidth = 75;
@@ -35,6 +48,8 @@
         var brickPadding = 10;
         var brickOffsetTop = 30;
         var brickOffsetLeft = 30;
+
+        // Score + lives
         var score = 0;
         var scorePerHit = 10;
         var lives = 3;
@@ -48,9 +63,15 @@
             }
         }
 
+        // **************** Event listeners : keyboard + mouse ****************
+
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
         document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        // **************** Functions ****************
+
+            // xxx Event listeners subfunctions xxx
 
         function mouseMoveHandler(e) {
             // e.clientX = horizontal mouse position in the viewport
@@ -83,6 +104,58 @@
             }
         };
 
+            // xxxxxxxxxx Draw subfunctions xxxxxxxxxxxxx
+
+        function drawBricks() {
+            for(var c=0; c<brickColumnCount; c++) {
+                for(var r=0; r<brickRowCount; r++) {
+                    // if status is 1, then draw the brick, but if it's 0, then it was hit by the ball and we don't want it on the screen anymore
+                    if(bricks[c][r].status == 1) {
+                    var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                    var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        function drawBall(color) {
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI*2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.closePath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        };
+
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        };
+
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: "+score, 8, 20);
+        }
+
+        function drawLives() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+        }
+
+            // xxxxxxxxxx Collisions xxxxxxxxxx
+
         function collisionDetection() {
             for(var c=0; c<brickColumnCount; c++) {
                 for(var r=0; r<brickRowCount; r++) {
@@ -108,43 +181,20 @@
                     }
                 }
             }
-        };
+        }; 
 
-        function drawBall(color) {
-            ctx.beginPath();
-            ctx.arc(x, y, 10, 0, Math.PI*2);
-            ctx.fillStyle = color;
-            ctx.fill();
-            ctx.closePath();
-            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        };
+            // xxxxxxxxxx Random colors xxxxxxxxxx
 
-        function drawPaddle() {
-            ctx.beginPath();
-            ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-            ctx.fillStyle = "#0095DD";
-            ctx.fill();
-            ctx.closePath();
-        };
-
-        function drawBricks() {
-            for(var c=0; c<brickColumnCount; c++) {
-                for(var r=0; r<brickRowCount; r++) {
-                    // if status is 1, then draw the brick, but if it's 0, then it was hit by the ball and we don't want it on the screen anymore
-                    if(bricks[c][r].status == 1) {
-                    var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-                    var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-                    bricks[c][r].x = brickX;
-                    bricks[c][r].y = brickY;
-                    ctx.beginPath();
-                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                    ctx.fillStyle = "#0095DD";
-                    ctx.fill();
-                    ctx.closePath();
-                    }
-                }
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
-        }
+            return color;
+            };
+
+        // **************** Draw function ****************
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -199,32 +249,13 @@
                     paddleX = 0;
                 }
             };
+        // Restart the game
         requestAnimationFrame(draw);
         };
 
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-            };
-
-        function drawScore() {
-            ctx.font = "16px Arial";
-            ctx.fillStyle = "#0095DD";
-            ctx.fillText("Score: "+score, 8, 20);
-        }
-
-        function drawLives() {
-            ctx.font = "16px Arial";
-            ctx.fillStyle = "#0095DD";
-            ctx.fillText("Lives: "+lives, canvas.width-65, 20);
-        }
-        
-        // The speed of the ball can be changed by changing the timer of the interval
+        // **************** Main function : controls all the rest ****************
         draw();
+
     </script>
 </body>
 </html>
