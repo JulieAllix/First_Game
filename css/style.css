@@ -1,3 +1,9 @@
+body {
+    /*background-image: url('../img/bf2.jpg');*/
+    background-color : #F9F7E8;
+}
+
 #myCanvas {
-    background-color : black;
+    background-color : #61BFAD;
+    
 }
