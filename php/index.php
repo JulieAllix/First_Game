@@ -1,24 +1,18 @@
 <?php
 require 'templates/header.tpl.php';
-require 'inc/data.php';
-$namesTableLength = count($namesList);
+require 'inc/playersName.php';
+require 'templates/footer.tpl.php';
 ?>
 
 <script>
 
-function randomName(){
-    Math.floor(Math.random() * Math.floor(max));
-}
-
 function askPlayersName(){
             var playerName = prompt('What\'s your name ?');
-            alert("Urgh, " + playerName + ', really ? May I call you ' + randomName() + ' instead ?');
+            var randomName = '<?= $randomName; ?>';
+            alert('Urgh, ' + playerName + ', really ? May I call you ' + randomName + ' instead ?');
+            alert('Great ! Let\'s go ' + randomName + ' !!');
         }
-
-randomName()
-//askPlayersName();
+        
+askPlayersName();
 </script>
 
-<?php
-require 'templates/footer.tpl.php';
-?>
