@@ -1,9 +1,46 @@
+/* Themes */
+
+:root {
+    --primary-color: #F9F7E8;
+    --secondary-color: #61BFAD;
+}
+
+/*
+[data-theme="alternative"] {
+    
+}
+*/
+
+/* All pages */
+
 body {
     /*background-image: url('../img/bf2.jpg');*/
-    background-color : #F9F7E8;
+    background-color : var(--primary-color);
 }
 
 #myCanvas {
-    background-color : #61BFAD;
+    background-color : var(--secondary-color);
+    
+}
+
+/* Index */
+.wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.level-title {
+    color: var(--secondary-color);
+    text-align: center;
+    display: block;
+    margin-top: 1em;
+}
+
+.form {
+    margin : 5em auto;
+}
+.button {
+    width: 5em;
     
 }
