@@ -3,6 +3,7 @@
 :root {
     --primary-color: #F9F7E8;
     --secondary-color: #61BFAD;
+    --third-color: rgb(29, 150, 130);
 }
 
 /*
@@ -24,6 +25,14 @@ body {
 }
 
 /* Index */
+
+.game-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3.3em;
+    text-align: center;
+    margin-top: 1em;
+}
+
 .wrapper{
     height: 100vh;
     display: flex;
@@ -31,7 +40,10 @@ body {
 }
 
 .level-title {
-    color: var(--secondary-color);
+    color: var(--third-color);
+    text-shadow: 1px 1px grey;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 2.2em;
     text-align: center;
     display: block;
     margin-top: 1em;
@@ -40,7 +52,22 @@ body {
 .form {
     margin : 5em auto;
 }
-.button {
-    width: 5em;
-    
+
+/*.button {
+    width: 15em;
+    margin-bottom: 1em;
+}*/
+
+.btn-primary {
+    background-color : var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 2em;
+    text-shadow: 1px 1px var(--third-color);
+    margin-bottom: .7em;
 }
+
+.btn-primary:hover {
+    background-color : var(--third-color);
+  ;
+}
+
