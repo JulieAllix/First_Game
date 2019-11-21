@@ -1,52 +1,47 @@
-<?php
-require 'templates/header.tpl.php';
-?>
-<canvas id="myCanvas" width="700" height="500"></canvas>
-
-    <script>
+var app = {
 
         // **************** Variables necessary for the game ****************
 
         // Colors
-        elementsColor = '#F9F7E8';
+        elementsColor = '#F9F7E8',
 
         // Canvas
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
-        var x = canvas.width/2;
-        var y = canvas.height-30;
-        var dx = -3;
-        var dy = -1;
+        canvas = document.getElementById("myCanvas"),
+        ctx = canvas.getContext("2d"),
+        x = canvas.width/2,
+        y = canvas.height-30,
+        dx = -3,
+        dy = -1,
 
         // Ball
-        var ballRadius = 10;
-        var randomColor = elementsColor;
+        ballRadius = 10,
+        randomColor = elementsColor,
 
         // Paddle
-        var paddleHeight = 15;
-        var paddleWidth = 150;
-        var paddleX = (canvas.width-paddleWidth) /2;
+        paddleHeight = 15,
+        paddleWidth = 150,
+        paddleX = (canvas.width-paddleWidth) /2,
 
         // Keyboard
-        var rightPressed = false;
-        var leftPressed = false;
+        rightPressed = false,
+        leftPressed = false,
 
         // Bricks
-        var brickRowCount = 5
-        var brickColumnCount = 5;
-        var brickWidth = 120;
-        var brickHeight = 20;
-        var brickPadding = 10;
-        var brickOffsetTop = 30;
-        var brickOffsetLeft = 30;
+        brickRowCount = 5,
+        brickColumnCount = 5,
+        brickWidth = 120,
+        brickHeight = 20,
+        brickPadding = 10,
+        brickOffsetTop = 30,
+        brickOffsetLeft = 30,
 
         // Score + lives
-        var score = 0;
-        var scorePerHit = 10;
-        var lives = 3;
+        score = 0,
+        scorePerHit = 10,
+        lives = 3,
 
         // initialize the bricks
-        var bricks = [];
+        bricks = [],
         for(var c=0; c<brickColumnCount; c++) {
             bricks[c] = [];
             for(var r=0; r<brickRowCount; r++) {
@@ -250,8 +245,4 @@ require 'templates/header.tpl.php';
         
         draw();
 
-</script>
-
-<?php
-require 'templates/footer.tpl.php';
-?>
+}
