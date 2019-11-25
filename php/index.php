@@ -8,16 +8,18 @@
             </header>
             <main>
                 <div class="wrapper">
-                    <h2 class="level-title">Please select your level of difficulty, <em id="randomName"></em> :</h2>
-                    <!-- Form that will enable the player to choose a level of difficulty -->
-                    <form class="form" action="" method="post">
+                    <h2 class="level-title">Please select your level of difficulty, <span id="randomName"></span> :</h2>
+                    
                         <div class="btn-group-vertical">
                             <button class="btn btn-primary border-0"><a class="level-link" href="very-easy-level.php">I really suck at that game, don't judge me, ok ?</a></button>
                             <button class="btn btn-primary border-0"><a class="level-link" href="easy-level.php">Let's start easy !</a></button>
-                            <button class="btn btn-primary border-0" ><a class="level-link" href="medium-level.php">I can handle more complicated stuff !</a></button>
-                            <button class="btn btn-primary border-0" ><a class="level-link" href="hardcore-level.php">HARDCOOOORE !</a></button>
+                            <button class="btn btn-primary border-0"><a class="level-link" href="medium-level.php">I can handle more complicated stuff !</a></button>
+                            <button class="btn btn-primary border-0"><a class="level-link" href="hardcore-level.php">HARDCOOOORE !</a></button>
                         </div>
-                    </form>
+
+                        <div class="btn-change-name">
+                            <button type="button" class="namerequest" id="change-name-button" >Change my name</button>
+                        </div>
                 </div>
             </main>
         </body>
@@ -25,8 +27,11 @@
 
 
     <script>
+        // We use a localStorage in order to keep the name given to the player in memory
+        const randomName = localStorage.getItem('name')
 
         function askPlayersName(){
+                    
                     var namesList = ['Karen','Michel','Jean-Jacques'];
                     var randomId = Math.floor(Math.random() * Math.floor(namesList.length));
                     var randomName = namesList[randomId];
@@ -35,9 +40,24 @@
                     alert('Urgh, ' + playerName + ', really ? May I call you ' + randomName + ' instead ?');
                     alert('Way better ! Let\'s go ' + randomName + ' !!');
                     document.getElementById('randomName').innerHTML = randomName;
+                    localStorage.setItem('name', randomName);
                 }
-                
+        
+        // If no name was given to the player yet, we call the function askPlayersName
+        if (randomName == ""){
         askPlayersName();
+        }else{
+        document.getElementById('randomName').innerHTML = randomName;
+        }
+
+        // We add an event listener on the click of the button that enables to change the name
+        var changeNameButton = document.getElementById('change-name-button');
+        changeNameButton.addEventListener('click', function(){
+            askPlayersName()
+        });
+        
+            
+        
 
     </script>
 

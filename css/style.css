@@ -61,7 +61,7 @@ a:hover, a:visited, a:focus {
     margin-top: 1em;
 }
 
-.form {
+.btn-group-vertical {
     margin : 5em auto;
 }
 
@@ -80,6 +80,16 @@ a:hover, a:visited, a:focus {
 
 .level-link:visited, .level-link:hover {
     color: var(--primary-color);
+}
+
+.btn-change-name{
+    display: flex;
+    justify-content: center;
+}
+
+.namerequest {
+    font-size: 1em;
+    
 }
 
 /* Game */
