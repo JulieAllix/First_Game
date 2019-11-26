@@ -40,10 +40,10 @@
                     var leftPressed = false;
             
                     // ** Bricks
-                    var brickRowCount = 2
+                    var brickRowCount = 1
                     var brickColumnCount = 5;
                     var brickWidth = 120;
-                    var brickHeight = 20;
+                    var brickHeight = 30;
                     var brickPadding = 10;
                     var brickOffsetTop = 30;
                     var brickOffsetLeft = 30;
@@ -60,8 +60,8 @@
                     // ** Score + lives
                     var score = 0;
                     var scorePerHit = 10;
-                    var lives = 3;
-                    var scoreStyle = "16px Arial";
+                    var lives = 4;
+                    var scoreStyle = "16px Tomorrow";
                     var xScore = 8;
                     var yScore = 20;
             

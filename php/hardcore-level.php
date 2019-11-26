@@ -40,7 +40,7 @@
                     var leftPressed = false;
             
                     // ** Bricks
-                    var brickRowCount = 5
+                    var brickRowCount = 8;
                     var brickColumnCount = 5;
                     var brickWidth = 120;
                     var brickHeight = 20;
@@ -61,7 +61,7 @@
                     var score = 0;
                     var scorePerHit = 10;
                     var lives = 1;
-                    var scoreStyle = "16px Arial";
+                    var scoreStyle = "16px Tomorrow";
                     var xScore = 8;
                     var yScore = 20;
 

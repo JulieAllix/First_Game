@@ -61,7 +61,7 @@
                     var score = 0;
                     var scorePerHit = 10;
                     var lives = 3;
-                    var scoreStyle = "16px Arial";
+                    var scoreStyle = "16px Tomorrow";
                     var xScore = 8;
                     var yScore = 20;
             
