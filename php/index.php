@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="btn-change-name">
-                            <button type="button" class="namerequest" id="change-name-button" >Change my name</button>
+                            <button type="button" class="namerequest" id="change-name-button" >New player</button>
                         </div>
                 </div>
             </main>

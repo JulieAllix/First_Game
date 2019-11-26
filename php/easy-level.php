@@ -8,7 +8,7 @@
             // **************** Variables necessary for the game ****************
             
                     // ** Colors
-                    elementsColor = '#F9F7E8';
+                    elementsColor = '#1E252D';
             
                     // ** Canvas
                     var canvas = document.getElementById("myCanvas");

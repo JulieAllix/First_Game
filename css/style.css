@@ -1,15 +1,18 @@
 /* Themes */
 
 :root {
-    --primary-color: #F9F7E8;
-    --secondary-color: #61BFAD;
-    --third-color: rgb(29, 150, 130);
-    --game-name-color: black;
+    --primary-color: #1E252D;
+    --secondary-color:  #E7E9E6;
+    --third-color: rgb(69, 132, 139);
+    --game-name-color: #57A7B0;
 }
 
 /*
 [data-theme="alternative"] {
-    
+    --primary-color: #F9F7E8;
+    --secondary-color: #61BFAD;
+    --third-color: rgb(29, 150, 130);
+    --game-name-color: bla
 }
 */
 
@@ -53,7 +56,7 @@ a:hover, a:visited, a:focus {
 
 .level-title {
     color: var(--third-color);
-    text-shadow: 1px 1px grey;
+    /*text-shadow: 1px 1px black;*/
     font-family: 'Tomorrow', sans-serif;
     font-size: 2.2em;
     text-align: center;
@@ -69,7 +72,7 @@ a:hover, a:visited, a:focus {
     background-color : var(--secondary-color);
     color: var(--primary-color);
     font-size: 2em;
-    text-shadow: 1px 1px var(--third-color);
+    /*text-shadow: 1px 1px grey;*/
     margin-bottom: .7em;
 }
 
