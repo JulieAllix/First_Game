@@ -15,6 +15,7 @@ var app = {
         }
     },
 
+    // define what happens when the keys are pressed
     keyDownHandler: function(e){
         if(e.key == "Right" || e.key == "ArrowRight") {
             rightPressed = true;
@@ -24,6 +25,7 @@ var app = {
         }
     },
 
+    // define what happens when the keys stop being pressed
     keyUpHandler: function(e){
         if(e.key == "Right" || e.key == "ArrowRight") {
             rightPressed = false;
@@ -44,8 +46,11 @@ var app = {
                 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
+                // beginPath enables to start a new path on the canvas and closePath is closing it
                 ctx.beginPath();
+                // define the rectangle
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                // enables to paint the rectangle
                 ctx.fillStyle = elementsColor;
                 ctx.fill();
                 ctx.closePath();
@@ -56,11 +61,11 @@ var app = {
 
     drawBall: function(color) {
         ctx.beginPath();
-        ctx.arc(x, y, ballSize, 0, Math.PI*2);
+        // 5 parameters: x and y coordinates of the arc's center, arc radius, start and end angle
+        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
         ctx.fillStyle = color;
         ctx.fill();
         ctx.closePath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     },
 
     drawPaddle: function() {
@@ -126,6 +131,7 @@ var app = {
     // **************** Draw function ****************
 
     draw: function() {
+        // clear canvas content
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         app.drawBricks();
@@ -135,9 +141,11 @@ var app = {
         app.drawLives();
         app.collisionDetection();
         
+        // update x and y with our dx and dy variable on every frame, so the ball will be painted in the new position on every update
         x += dx;
         y += dy;
     
+        // when the distance between the center of the ball and the edge of the wall is exactly the same as the radius of the ball, it will change the movement direction + give a new random color to the ball.
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
             dx = -dx;
             randomColor = app.getRandomColor();
@@ -147,8 +155,9 @@ var app = {
             dy = -dy;
             randomColor = app.getRandomColor();
         } else if(y + dy > canvas.height-ballRadius) {
+            // collision detection between the ball and the paddle, so it can bounce off it and get back into the play area
             if(x > paddleX && x < paddleX + paddleWidth) {
-                dy = -dy * 1.1;
+                dy = -dy * ballSpeedAfterHittingPaddle;
             }
             else {
                 lives--;
@@ -165,15 +174,20 @@ var app = {
                 }
             }
         }
-    
+        
+        // define the movement of the paddle (with speed) when the keys are pressed
         if(rightPressed) {
-            paddleX += 15;
+            paddleX += paddleSpeed;
+            // move the paddle only within the boundaries of the canvas
+            // *********************************************
+            // USEFUL USEFUL USEFUL
+            // *********************************************
             if (paddleX + paddleWidth > canvas.width){
                 paddleX = canvas.width - paddleWidth;
             }
         }
         else if(leftPressed) {
-            paddleX -= 15;
+            paddleX -= paddleSpeed;
             if (paddleX < 0){
                 paddleX = 0;
             }

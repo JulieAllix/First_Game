@@ -1,38 +1,42 @@
 <?php
     require 'templates/header.tpl.php';
-    require 'templates/link-to-index.tpl.php';
+    require 'templates/header-2.tpl.php';
 ?>
         
     <script>
 
             // **************** Variables necessary for the game ****************
             
-                    // Colors
+                    // ** Colors
                     elementsColor = '#F9F7E8';
             
-                    // Canvas
+                    // ** Canvas
                     var canvas = document.getElementById("myCanvas");
                     var ctx = canvas.getContext("2d");
                     var x = canvas.width/2;
                     var y = canvas.height-30;
+            
+                    // ** Ball
+                    var ballRadius = 10;
+                    var randomColor = elementsColor;
+                    var ballSpeedAfterHittingPaddle = 1.1;
+                    // enable the ball movement
                     var dx = -3;
                     var dy = -1;
             
-                    // Ball
-                    var ballRadius = 10;
-                    var randomColor = elementsColor;
-                    var ballSize = 10;
-            
-                    // Paddle
+                    // ** Paddle
                     var paddleHeight = 15;
                     var paddleWidth = 150;
+                    var paddleSpeed = 15;
+                    // starting point of the paddle on the X axis
                     var paddleX = (canvas.width-paddleWidth) /2;
             
-                    // Keyboard
+                    // ** Keyboard
+                    // the default value for both is false because at the beginning the control buttons are not pressed. 
                     var rightPressed = false;
                     var leftPressed = false;
             
-                    // Bricks
+                    // ** Bricks
                     var brickRowCount = 5
                     var brickColumnCount = 5;
                     var brickWidth = 120;
@@ -41,7 +45,7 @@
                     var brickOffsetTop = 30;
                     var brickOffsetLeft = 30;
             
-                    // Score + lives
+                    // ** Score + lives
                     var score = 0;
                     var scorePerHit = 10;
                     var lives = 3;

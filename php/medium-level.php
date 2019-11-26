@@ -1,6 +1,6 @@
 <?php
     require 'templates/header.tpl.php';
-    require 'templates/link-to-index.tpl.php';
+    require 'templates/header-2.tpl.php';
 ?>
         
     <script>
