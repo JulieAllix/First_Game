@@ -73,7 +73,8 @@ a:hover, a:visited, a:focus {
     color: var(--primary-color);
     font-size: 2em;
     /*text-shadow: 1px 1px grey;*/
-    margin-bottom: .7em;
+    margin-bottom: .5em;
+    border-radius: 10px;
 }
 
 .btn-primary:hover {
@@ -92,6 +93,12 @@ a:hover, a:visited, a:focus {
 
 .namerequest {
     font-size: 1em;
+    font-weight: bold;
+    background-color : var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 7px;
+    padding: .3em;
     
 }
 
