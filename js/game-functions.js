@@ -7,11 +7,13 @@ var app = {
         // canvas.offsetLeft = distance between the left edge of the canvas and left edge of the viewport
         // relativeX = distance between the canvas left edge and the mouse pointer
         var relativeX = e.clientX - canvas.offsetLeft;
-
-        /*If the relative X pointer position is greater than zero and lower than the Canvas width, the pointer is within the Canvas boundaries*/
-        if(relativeX > 0 && relativeX < canvas.width) {
-            // paddleX = position of the paddle (anchored on the left edge of the paddle)
+        // if the relative X pointer position is greater than half the paddle width and lower than the Canvas width minus half the paddle width, the pointer is within the Canvas boundaries
+        if(relativeX > paddleWidth/2 && relativeX < canvas.width - paddleWidth/2) {
             paddleX = relativeX - paddleWidth/2;
+        }else if(relativeX <= paddleWidth){
+            paddleX = 0;
+        }else if(relativeX >= canvas.width - paddleWidth){
+            paddleX = canvas.width - paddleWidth;
         }
     },
 
@@ -38,6 +40,7 @@ var app = {
     // xxxxxxxxxx Draw subfunctions xxxxxxxxxxxxx
 
     drawBricks: function() {
+        // loop through all the bricks in the array and draw them on the screen
         for(var c=0; c<brickColumnCount; c++) {
             for(var r=0; r<brickRowCount; r++) {
                 // if status is 1, then draw the brick, but if it's 0, then it was hit by the ball and we don't want it on the screen anymore
@@ -77,9 +80,10 @@ var app = {
     },
 
     drawScore: function() {
-        ctx.font = "16px Arial";
+        ctx.font = scoreStyle;
         ctx.fillStyle = elementsColor;
-        ctx.fillText("Score: "+score, 8, 20);
+        // three parameters : text, coordinates where the text will be placed on the canvas
+        ctx.fillText("Score: "+score, xScore, yScore);
     },
 
     drawLives: function() {
@@ -98,7 +102,7 @@ var app = {
                 - we'll change the direction of the ball;
                 - we'll set the status of the given brick to 0 so it won't be painted on the screen;
                 - we'll change the color of the ball;
-                - we'll add 1pt to the score;
+                - we'll add points to the score;
                 */
                 if(b.status == 1) {
                     if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
@@ -165,11 +169,12 @@ var app = {
                     alert("GAME OVER");
                     document.location.reload();
                 }
+                // if there are still some lives left, then the position of the ball and the paddle are reset, along with the movement of the ball
                 else {
                     x = canvas.width/2;
                     y = canvas.height-30;
-                    dx = 2;
-                    dy = -2;
+                    dx = initialDx;
+                    dy = initialDy;
                     paddleX = (canvas.width-paddleWidth)/2;
                 }
             }
@@ -179,9 +184,6 @@ var app = {
         if(rightPressed) {
             paddleX += paddleSpeed;
             // move the paddle only within the boundaries of the canvas
-            // *********************************************
-            // USEFUL USEFUL USEFUL
-            // *********************************************
             if (paddleX + paddleWidth > canvas.width){
                 paddleX = canvas.width - paddleWidth;
             }
@@ -197,7 +199,7 @@ var app = {
     }
 
 };
-
+// the draw() function is getting executed again and again within a requestAnimationFrame() loop, but instead of a fixed frame rate, we are giving control of the framerate back to the browser. It will sync the framerate accordingly and render the shapes only when needed. This produces a more efficient, smoother animation loop than the setInterval() method.
 document.addEventListener('DOMContentLoaded', app.draw);
 
 
