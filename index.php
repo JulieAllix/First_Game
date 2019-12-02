@@ -1,4 +1,5 @@
 <?php 
+    require 'vendor/autoload.php';
     require 'controllers/MainController.php';
     require 'controllers/LevelController.php';
     //var_dump($MainController);
@@ -9,50 +10,78 @@
         $pageToDisplay = $_GET['_url'];
     }
 
-    // here we define the routes : link between the requested url and the method of the Controller
-    $routes = [
-        '/' => [
-            'action' => 'homeAction',
-            'controller' => 'MainController'
-        ],
-        '/very-easy' => [
+    $router = new AltoRouter();
+    // we indicate to AltoRouter where the root of the site is with basePath
+    $router->setBasePath($_SERVER['BASE_URI']);
+
+
+    // we define each route by calling map
+    $router->map(
+    'GET',
+    '/', 
+    [
+        'action' => 'homeAction',
+        'controller' => 'MainController'
+    ],
+    'Home page'
+    );
+
+    $router->map(
+        'GET',
+        '/very-easy', 
+        [
             'action' => 'veryEasyAction',
             'controller' => 'LevelController'
         ],
-        '/easy' => [
+        'Very easy level'
+    );
+
+    $router->map(
+        'GET',
+        '/easy', 
+        [
             'action' => 'easyAction',
             'controller' => 'LevelController'
         ],
-        '/medium' => [
+        'Easy level'
+    );
+
+    $router->map(
+        'GET',
+        '/medium', 
+        [
             'action' => 'mediumAction',
             'controller' => 'LevelController'
         ],
-        '/hardcore' => [
+        'Medium level'
+    );
+
+        $router->map(
+        'GET',
+        '/hardcore', 
+        [
             'action' => 'hardcoreAction',
             'controller' => 'LevelController'
-        ]
-    ];
-    //var_dump($routes[$pageToDisplay]);
-    // we check if there is a page corresponding to the value of $pageToDisplay and we create a dispatcher
-    if (isset($routes[$pageToDisplay])) {
+        ],
+        'Hardcore level'
+    );
 
-        // we get the method + class of the controller to use in an array
-        $routeData = $routes[$pageToDisplay];
-       
-        $methodToCall = $routeData['action'];
-        
-        $controllerToUse = $routeData['controller'];
-        //var_dump($controllerToUse);
+    // once the routes are added to AltoRouter, we check if there is a route matching the requested page
+    $match = $router->match();
+    //var_dump($match);
 
-    
-        // in order to dynamically call the correct controller + method, we use the variables $methodToCall et $controllerToUse
-        //$controller = new $MainController();
-        $controller = new $controllerToUse();
-        //var_dump($controller);
-        //var_dump($methodToCall);
-        $controller->$methodToCall();
-        $controller->homeAction;
-    
+    // if a route was found, we will look for the information about the method and the controller in $match 
+    if ($match) {
+    $methodToCall = $match['target']['action'];
+    $controllerToUse = $match['target']['controller'];
+
+    $urlParams = $match['params'];
+    //var_dump($urlParams);
+
+    // in order to dynamically call the controller + method, we use the variables $methodToCall + $controllerToUse
+    $controller = new $controllerToUse();
+    $controller->$methodToCall($urlParams);
+
     } else {
         // we display a 404 page
         header("HTTP/1.0 404 Not Found");
@@ -61,14 +90,9 @@
         exit();
     }  
 
-   
-    //require '../templates/header.tpl.php';
 ?>
 
-        <!--<body>
-            <header>
-                <h1 class="game-title">I want to break free</h1>
-            </header> -->
+
             
 
     

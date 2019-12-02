@@ -5,26 +5,42 @@ class LevelController {
 
     // method to display the very easy page
     public function veryEasyAction() {
-        $this->show('very-easy-level', '/very-easy');
+        $viewVars = [
+            'title' => 'Very easy level',
+            'url' => '/very-easy'
+        ];
+        $this->show('very-easy-level', $viewVars);
     }
 
     // method to display the easy page
     public function easyAction() {
-        $this->show('easy-level', '/easy');
+        $viewVars = [
+            'title' => 'Easy level',
+            'url' => '/easy'
+        ];
+        $this->show('easy-level', $viewVars);
     }
 
     // method to display the medium page
     public function mediumAction() {
-        $this->show('medium-level', '/medium');
+        $viewVars = [
+            'title' => 'Medium level',
+            'url' => '/medium'
+        ];
+        $this->show('medium-level', $viewVars);
     }
 
     // method to display the hardcore page
     public function hardcoreAction() {
-        $this->show('hardcore-level', '/hardcore');
+        $viewVars = [
+            'title' => 'Hardcore level',
+            'url' => '/hardcore'
+        ];
+        $this->show('hardcore-level', $viewVars);
     }
 
     // method used to display the templates + page
-    private function show($viewName, $url) {
+    private function show($viewName, $viewVars) {
         var_dump($viewName);
         require __DIR__.'/../php/templates/header.tpl.php';
         require __DIR__.'/../php/templates/header-level.tpl.php';
