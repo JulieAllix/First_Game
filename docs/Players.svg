@@ -1,0 +1,81 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="316" height="204" view_box="0 0 316 204"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Tue, 03 Dec 2019 10:00:38</desc>
+
+<rect id="frame" x="0" y="0" width="316" height="204" fill="#f7f7f7" stroke="none" stroke-width="0"/>
+
+<!-- Association SCORES A -->
+<line x1="48" y1="60" x2="168" y2="60" stroke="#4393c3" stroke-width="2"/>
+<text x="92" y="77.0" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
+<line x1="273" y1="60" x2="168" y2="60" stroke="#4393c3" stroke-width="2"/>
+<text x="213" y="52.0" fill="#b2182b" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-SCORES A">
+	<path d="M 193 35 a 14 14 90 0 1 14 14 V 60 h -78 V 49 a 14 14 90 0 1 14 -14" fill="#92c5de" stroke="#92c5de" stroke-width="0"/>
+	<path d="M 207 60.0 v 11 a 14 14 90 0 1 -14 14 H 143 a 14 14 90 0 1 -14 -14 V 60.0 H 78" fill="#d1e5f0" stroke="#d1e5f0" stroke-width="0"/>
+	<rect x="129" y="35" width="78" height="50" fill="none" rx="14" stroke="#4393c3" stroke-width="2"/>
+	<line x1="129" y1="60" x2="207" y2="60" stroke="#4393c3" stroke-width="1"/>
+	<text x="136" y="52.7" fill="#000000" font-family="Verdana" font-size="12">SCORES A</text>
+</g>
+
+<!-- Association TAKES PLACE IN A -->
+<line x1="273" y1="60" x2="168" y2="161" stroke="#4393c3" stroke-width="2"/>
+<text x="213" y="91.5816256046" fill="#b2182b" font-family="Verdana" font-size="12">1,1</text>
+<line x1="48" y1="161" x2="168" y2="161" stroke="#4393c3" stroke-width="2"/>
+<text x="77" y="178.0" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-TAKES PLACE IN A">
+	<path d="M 218 136 a 14 14 90 0 1 14 14 V 161 h -128 V 150 a 14 14 90 0 1 14 -14" fill="#92c5de" stroke="#92c5de" stroke-width="0"/>
+	<path d="M 232 161.0 v 11 a 14 14 90 0 1 -14 14 H 118 a 14 14 90 0 1 -14 -14 V 161.0 H 128" fill="#d1e5f0" stroke="#d1e5f0" stroke-width="0"/>
+	<rect x="104" y="136" width="128" height="50" fill="none" rx="14" stroke="#4393c3" stroke-width="2"/>
+	<line x1="104" y1="161" x2="232" y2="161" stroke="#4393c3" stroke-width="1"/>
+	<text x="111" y="153.7" fill="#000000" font-family="Verdana" font-size="12">TAKES PLACE IN A</text>
+</g>
+
+<!-- Entity PLAYER -->
+<g id="entity-PLAYER">
+	<g id="frame-PLAYER">
+		<rect x="9" y="18" width="78" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="9" y="43.0" width="78" height="59" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="9" y="18" width="78" height="84" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="9" y1="43" x2="87" y2="43" stroke="#d6604d" stroke-width="1"/>
+	</g>
+	<text x="25" y="35.7" fill="#000000" font-family="Verdana" font-size="12">PLAYER</text>
+	<text x="14" y="60.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="14" y1="63" x2="26" y2="63" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="77.8" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<text x="14" y="94.8" fill="#000000" font-family="Verdana" font-size="12">new_name</text>
+</g>
+
+<!-- Entity SCORE -->
+<g id="entity-SCORE">
+	<g id="frame-SCORE">
+		<rect x="239" y="9" width="68" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="239" y="34.0" width="68" height="77" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="239" y="9" width="68" height="102" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="239" y1="34" x2="307" y2="34" stroke="#d6604d" stroke-width="1"/>
+	</g>
+	<text x="251" y="26.7" fill="#000000" font-family="Verdana" font-size="12">SCORE</text>
+	<text x="244" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="244" y1="54" x2="256" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="244" y="68.8" fill="#000000" font-family="Verdana" font-size="12">level_id</text>
+	<text x="244" y="85.8" fill="#000000" font-family="Verdana" font-size="12">player_id</text>
+	<text x="244" y="102.8" fill="#000000" font-family="Verdana" font-size="12">score</text>
+</g>
+
+<!-- Entity LEVEL -->
+<g id="entity-LEVEL">
+	<g id="frame-LEVEL">
+		<rect x="24" y="127" width="48" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="24" y="152.0" width="48" height="43" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="24" y="127" width="48" height="68" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="24" y1="152" x2="72" y2="152" stroke="#d6604d" stroke-width="1"/>
+	</g>
+	<text x="29" y="144.7" fill="#000000" font-family="Verdana" font-size="12">LEVEL</text>
+	<text x="29" y="169.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="29" y1="172" x2="41" y2="172" stroke="#000000" stroke-width="1"/>
+	<text x="29" y="186.8" fill="#000000" font-family="Verdana" font-size="12">name</text>
+</g>
+</svg>
