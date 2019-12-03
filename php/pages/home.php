@@ -28,15 +28,26 @@
 
         function askPlayersName(){
                     
+                    // we randomly select a new name among the namesList table
                     var namesList = ['Karen','Michel','Jean-Jacques'];
                     var randomId = Math.floor(Math.random() * Math.floor(namesList.length));
                     var randomName = namesList[randomId];
 
+                    // we request the player's name and change it for the new name
                     var playerName = prompt('What\'s your name ?');
                     alert('Urgh, ' + playerName + ', really ? May I call you ' + randomName + ' instead ?');
                     alert('Way better ! Let\'s go ' + randomName + ' !!');
                     document.getElementById('randomName').innerHTML = randomName;
                     localStorage.setItem('name', randomName);
+
+
+                    var sql = "INSERT INTO player (name, new_name) VALUES (playerName, randomName)";
+                    con.query(sql, function (err, result) {
+                        if (err) throw err;
+                        console.log("1 record inserted");
+                    });
+                    });
+
                 }
         
         // If no name was given to the player yet, we call the function askPlayersName
@@ -50,15 +61,10 @@
         var changeNameButton = document.getElementById('change-name-button');
         changeNameButton.addEventListener('click', function(){
             askPlayersName()
-        });
-        
-            
-        
+        }); 
 
     </script>
 
-<!--
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    -->
+<?php
+
+?>

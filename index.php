@@ -2,6 +2,9 @@
     require 'vendor/autoload.php';
     require 'controllers/MainController.php';
     require 'controllers/LevelController.php';
+    // we connect to the db
+    //require 'db-connexion.php';
+
     //var_dump($MainController);
     // by default, we consider we are on the index page
     $pageToDisplay = '/';
