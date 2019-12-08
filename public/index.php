@@ -24,7 +24,7 @@
     '/', 
     [
         'action' => 'homeAction',
-        'controller' => 'MainController'
+        'controller' => '\Breakfree\Controllers\MainController'
     ],
     'Home page'
     );
@@ -34,7 +34,7 @@
         '/very-easy', 
         [
             'action' => 'veryEasyAction',
-            'controller' => 'LevelController'
+            'controller' => '\Breakfree\Controllers\LevelController'
         ],
         'Very easy level'
     );
@@ -44,7 +44,7 @@
         '/easy', 
         [
             'action' => 'easyAction',
-            'controller' => 'LevelController'
+            'controller' => '\Breakfree\Controllers\LevelController'
         ],
         'Easy level'
     );
@@ -54,7 +54,7 @@
         '/medium', 
         [
             'action' => 'mediumAction',
-            'controller' => 'LevelController'
+            'controller' => '\Breakfree\Controllers\LevelController'
         ],
         'Medium level'
     );
@@ -64,7 +64,7 @@
         '/hardcore', 
         [
             'action' => 'hardcoreAction',
-            'controller' => 'LevelController'
+            'controller' => '\Breakfree\Controllers\LevelController'
         ],
         'Hardcore level'
     );

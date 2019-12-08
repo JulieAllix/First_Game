@@ -1,5 +1,7 @@
 <?php
 
+namespace Breakfree\Controllers;
+
 // the MainController class will get the necessary data and display the requested page
 class LevelController {
 

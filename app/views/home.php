@@ -26,6 +26,13 @@
         // We use a localStorage in order to keep the name given to the player in memory
         const randomName = localStorage.getItem('name')
 
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
         function askPlayersName(){
                     
                     // we randomly select a new name among the namesList table
@@ -39,14 +46,10 @@
                     alert('Way better ! Let\'s go ' + randomName + ' !!');
                     document.getElementById('randomName').innerHTML = randomName;
                     localStorage.setItem('name', randomName);
-
-
-                    /*var sql = "INSERT INTO player (name, new_name) VALUES (playerName, randomName)";
-                    con.query(sql, function (err, result) {
-                        if (err) throw err;
-                        console.log("1 record inserted");
-                    });
-                    });*/
+                    // we set cookies in order to transmit the js variables to php (to transmit them to the DB afterwards)
+                    // there are three parameters : name of the cookie, value of the cookie, number of days until the cookie should expire
+                    setCookie('player_name', playerName, 1);
+                    setCookie('random_name', randomName, 1);
 
                 }
         
