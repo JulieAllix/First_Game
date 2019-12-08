@@ -14,8 +14,8 @@ class MainController {
 
     // method used to display the templates + page
     private function show($viewName, $viewVars=array()) {
-        require __DIR__.'/../php/templates/header.tpl.php';
-        require __DIR__.'/../php/pages/'.$viewName.'.php';
-       // require __DIR__.'/../php/templates/footer.tpl.php';
+        require __DIR__.'/../views/header.tpl.php';
+        require __DIR__.'/../views/'.$viewName.'.php';
+       // require __DIR__.'/../views/footer.tpl.php';
     }
 }

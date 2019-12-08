@@ -1,0 +1,10 @@
+; Configuration file (example ) 
+; create a copy of this file and name it config.ini 
+; it is the app/config.ini file that is used by the code
+; in order to get the configuration of the current machine 
+; fill-in the below parameters in the app/config.ini file
+
+DB_HOST=localhost
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=

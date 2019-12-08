@@ -1,7 +1,7 @@
 <?php 
-    require 'vendor/autoload.php';
-    require 'controllers/MainController.php';
-    require 'controllers/LevelController.php';
+    require '../vendor/autoload.php';
+    require '../app/Controllers/MainController.php';
+    require '../app/Controllers/LevelController.php';
     // we connect to the db
     //require 'db-connexion.php';
 

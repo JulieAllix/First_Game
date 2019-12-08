@@ -41,10 +41,10 @@ class LevelController {
 
     // method used to display the templates + page
     private function show($viewName, $viewVars) {
-        var_dump($viewName);
-        require __DIR__.'/../php/templates/header.tpl.php';
-        require __DIR__.'/../php/templates/header-level.tpl.php';
-        require __DIR__.'/../php/pages/'.$viewName.'.php';
-       // require __DIR__.'/../php/templates/footer.tpl.php';
+        //var_dump($viewName);
+        require __DIR__.'/../views/header.tpl.php';
+        require __DIR__.'/../views/header-level.tpl.php';
+        require __DIR__.'/../views/'.$viewName.'.php';
+       // require __DIR__.'/../views/footer.tpl.php';
     }
 }

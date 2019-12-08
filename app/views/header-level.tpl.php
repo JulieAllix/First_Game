@@ -7,6 +7,6 @@
         <!-- Define the dimensions of the game canvas -->
         <canvas id="myCanvas" width="700" height="500"></canvas>
     </main>
-    <script src="js/game-functions.js"></script>
+    <script src="../docs/js/game-functions.js"></script>
 </body>
 </html>

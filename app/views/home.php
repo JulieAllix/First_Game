@@ -41,12 +41,12 @@
                     localStorage.setItem('name', randomName);
 
 
-                    var sql = "INSERT INTO player (name, new_name) VALUES (playerName, randomName)";
+                    /*var sql = "INSERT INTO player (name, new_name) VALUES (playerName, randomName)";
                     con.query(sql, function (err, result) {
                         if (err) throw err;
                         console.log("1 record inserted");
                     });
-                    });
+                    });*/
 
                 }
         
@@ -64,7 +64,3 @@
         }); 
 
     </script>
-
-<?php
-
-?>
