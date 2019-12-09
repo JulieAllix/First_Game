@@ -74,9 +74,9 @@
         '/scores', 
         [
             'action' => 'scoreAction',
-            'controller' => '\Breakfree\Controllers\LevelController'
+            'controller' => '\Breakfree\Controllers\MainController'
         ],
-        'scores'
+        'Scores'
     );
 
     // once the routes are added to AltoRouter, we check if there is a route matching the requested page

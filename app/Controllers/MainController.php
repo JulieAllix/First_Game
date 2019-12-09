@@ -32,4 +32,12 @@ class MainController {
         $this->show('home', $viewVars);
     }
 
+    public function scoreAction(){
+        $viewVars = [
+            'title' => 'Scores page',
+            'url' => '/scores'
+        ];
+        $this->show('scores', $viewVars);
+    }
+
 }
