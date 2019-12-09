@@ -69,6 +69,7 @@
 
         // **************** Main function : controls all the rest ****************
         
+        appGen.setCookie('level_id', '1', 1);
         app.draw();
             
 </script>
