@@ -5,22 +5,27 @@
 <pre>
 <?php
 //var_dump($viewVars['score_data']);
-//var_dump($viewVars['level_name']);
 ?>
 </pre>
 <main>
     <div class="wrapper-table">
         <table class="table">
             <tr class="table-header">
+                <th>Ranking</th>
                 <th>Player's name</th>
                 <th>Also known as</th> 
                 <th>Score</th>
             </tr>
+            <?php $i = 1;
+            foreach ($viewVars['score_data'] as $currentScore):?>
             <tr class="table-content">
-                <td>Michel</td>
-                <td>Jullix</td>
-                <td>100</td>
+                <td><?=$i?></td>
+                <td><?= $currentScore->getPlayerNewname() ?></td>
+                <td><?= $currentScore->getPlayerName() ?></td>
+                <td><?= $currentScore->getScore() ?></td>
             </tr>
+            <?php $i++;
+            endforeach ?>
         </table>
     </div>
 </main>

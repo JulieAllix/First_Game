@@ -132,4 +132,21 @@ class Scores extends CoreModel {
 
         return $this;
     }
+
+    /**
+     * Get the value of player_newname
+     */ 
+    public function getPlayerNewname()
+    {
+        return $this->player_newname;
+    }
+
+    /**
+     * Get the value of player_name
+     */ 
+    public function getPlayerName()
+    {
+        return $this->player_name;
+    }
+
 }
