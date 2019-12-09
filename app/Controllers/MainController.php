@@ -2,44 +2,40 @@
 
 namespace Breakfree\Controllers;
 
+use Breakfree\Utils\Database;
+
 // the MainController class will get the necessary data and display the requested page
 class MainController {
 
     protected $playerName; 
     protected $randomName;
 
-    /*public function insertNamesInDB() {
+    
+    public function insertNamesInDB() {
 
-        $sql = '
+        // we cannot directly transmit php variables into the DB, thus, for the moment, we replace the values by "?"
+        $sql = "
         INSERT INTO player (name, new_name) 
-        VALUES ($this->playerName, $this->randomName)
-        ';
+        VALUES (?, ?)
+        ";
 
         $pdo = Database::getPDO();
 
-        $pdoStatement = $pdo->query($sql);
-    
-        // Avec les espaces de nom, on doit préciser à PDO
-        // le FQCN pour qu'il puisse trouver la bonne classe
-        // $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, '\Oshop\Models\Brand');
-        // Petite astuce, on peut utiliser __CLASS__ pour récupérer
-        // automatiquement le nom de la classe dans laquelle on est
-        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, __CLASS__);
-    
-        return $brands;
-    }*/
+        // this is where we can transmit the php variables into SQL
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->playerName, $this->randomName]);
 
-
+    }
 
     // method to display the home page
-   // public function homeAction($playerName, $randomName) {
     public function homeAction() {
-
-        $playerName = $_COOKIE['player_name'];
-        $randomName = $_COOKIE['random_name'];
-        $this->setPlayerName($playerName);
-        $this->setRandomName($randomName);
-        //$this->insertNamesInDB();
+        if(isset($_COOKIE['player_name'])){
+            $playerName = $_COOKIE['player_name'];
+            $randomName = $_COOKIE['random_name'];
+            $this->setPlayerName($playerName);
+            $this->setRandomName($randomName);
+            $this->insertNamesInDB();
+        }
 
         $viewVars = [
             'title' => 'Homepage',

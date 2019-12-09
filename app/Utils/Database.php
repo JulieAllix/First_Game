@@ -1,6 +1,6 @@
 <?php
 
-namespace Oshop\Utils;
+namespace Breakfree\Utils;
 
 use PDO;
 
