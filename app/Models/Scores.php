@@ -36,7 +36,7 @@ class Scores extends CoreModel {
         $stmt->execute([$this->level_id, $this->player_id, $this->score]);
     }
 
-    public function findScoreDataFromDB(){
+    public function findScoreByLevelId($levelId){
         $sql = '
             SELECT `scores`.*,
             level.name AS level_name, player.name AS player_name, player.new_name AS player_newname
@@ -45,6 +45,7 @@ class Scores extends CoreModel {
             ON scores.level_id = level.id
             JOIN `player`
             ON scores.player_id = player.id
+            WHERE level_id = ' . $levelId . '
             ORDER BY score DESC
             LIMIT 20
         ';

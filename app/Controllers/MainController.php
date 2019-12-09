@@ -34,17 +34,18 @@ class MainController {
     }
 
     public function scoreAction(){
-        $scoreModel = new Scores();
-
-        $scoreModel->getCookies();
-        $scoreModel->insertScoreInDB();
-        $scoreData = $scoreModel->findScoreDataFromDB();
 
         // we need to find the level name
         $levelModel = new Level();
         $levelId = $_COOKIE["level_id"];
         $levels = $levelModel->findAllByLevelId($levelId);
         $levelName = $levels[0]['name'];
+
+        // here we need to extract the scores from the DB for a specific level id
+        $scoreModel = new Scores();
+        $scoreModel->getCookies();
+        $scoreModel->insertScoreInDB();
+        $scoreData = $scoreModel->findScoreByLevelId($levelId);
         
         //$levelName = $levelModel->name();
 
