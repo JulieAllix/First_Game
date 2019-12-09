@@ -2,6 +2,8 @@
 
 namespace Breakfree\Controllers;
 
+use Breakfree\Models\Level;
+
 // the MainController class will get the necessary data and display the requested page
 class LevelController {
 
@@ -29,6 +31,10 @@ class LevelController {
 
     // method to display the very easy page
     public function veryEasyAction() {
+
+        $levelModel = new Level();
+        $levelModel->setCookie('level_id','1');
+
 /*
         if(isset($_COOKIE['score'])){
             // enables to get the cookies data and insert it into the DB
@@ -46,6 +52,10 @@ class LevelController {
 
     // method to display the easy page
     public function easyAction() {
+
+        $levelModel = new Level();
+        $levelModel->setCookie('level_id','2');
+
         $viewVars = [
             'title' => 'Easy level',
             'url' => '/easy'
@@ -55,6 +65,10 @@ class LevelController {
 
     // method to display the medium page
     public function mediumAction() {
+
+        $levelModel = new Level();
+        $levelModel->setCookie('level_id','3');
+
         $viewVars = [
             'title' => 'Medium level',
             'url' => '/medium'
@@ -64,6 +78,10 @@ class LevelController {
 
     // method to display the hardcore page
     public function hardcoreAction() {
+
+        $levelModel = new Level();
+        $levelModel->setCookie('level_id','4');
+
         $viewVars = [
             'title' => 'Hardcore level',
             'url' => '/hardcore'

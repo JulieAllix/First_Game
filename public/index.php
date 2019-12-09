@@ -59,7 +59,7 @@
         'Medium level'
     );
 
-        $router->map(
+    $router->map(
         'GET',
         '/hardcore', 
         [
@@ -67,6 +67,16 @@
             'controller' => '\Breakfree\Controllers\LevelController'
         ],
         'Hardcore level'
+    );
+
+    $router->map(
+        'GET',
+        '/scores', 
+        [
+            'action' => 'scoreAction',
+            'controller' => '\Breakfree\Controllers\LevelController'
+        ],
+        'scores'
     );
 
     // once the routes are added to AltoRouter, we check if there is a route matching the requested page
