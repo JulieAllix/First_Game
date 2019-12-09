@@ -28,5 +28,14 @@
             endforeach ?>
         </table>
     </div>
-    <button class="btn btn-primary border-0"><a class="" href="./">Back to homepage</a></button>
+    <nav class="navbar">
+        <ul class="navbar-ul">
+            <li class="navbar-item">
+            <a href="./" class="navbar-link">Home</a>
+            </li>
+            <li class="navbar-item">
+            <a href="" class="navbar-link">Try again</a>
+            </li>
+        </ul>
+    </nav>
 </main>

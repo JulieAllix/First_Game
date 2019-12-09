@@ -123,7 +123,8 @@ a:hover, a:visited, a:focus {
 .table {
     width: 70vw;
     display:flex;
-    margin-top: 3em;
+    margin-top: 2em;
+    justify-content: center;
 }
 
 .table-header {
@@ -158,4 +159,47 @@ tbody td {
 
 .table-content {
     font-size: 1em;
+}
+
+/* Navbar scores */
+
+.navbar {
+    width: 70vw;
+    display:flex;
+    margin: 1em auto;
+    justify-content: center;
+    border-radius: .3em;
+    background-color: #353192;
+    border: 2px solid #201e58;
+    padding: .2em;
+}
+
+.navbar-ul {
+    width: 20vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar-item {
+    color: #F9F9F9;
+    padding: .5em;
+    border-radius: .3em;
+    font-size: 1.1em;
+    font-family: 'Anton', cursive;
+    text-shadow: 1px 1px black;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #F9F9F9;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #F9F9F9;
+}
+
+a:hover {
+    color: #62B1E5;
 }
