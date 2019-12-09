@@ -7,8 +7,43 @@ use Breakfree\Utils\Database;
 // the MainController class will get the necessary data and display the requested page
 class MainController {
 
-    protected $playerName; 
-    protected $randomName;
+    protected $name; 
+    protected $new_name;
+    protected $id;
+
+    protected function getCookies() {
+        $name = $_COOKIE['player_name'];
+        $new_name = $_COOKIE['random_name'];
+        $this->setName($name);
+        $this->setNewName($new_name);
+        $this->insertNamesInDB();
+    }
+
+    protected function insertNamesInDB() {
+        // we cannot directly transmit php variables into the DB, thus, for the moment, we replace the values by "?"
+        $sql = "
+        INSERT INTO player (name, new_name) 
+        VALUES (?, ?)
+        ";
+        $pdo = Database::getPDO();
+        // this is where we can transmit the php variables into SQL
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->name, $this->new_name]);
+    }
+
+    protected function getPlayerData(){
+        // we will select the player Id of the latest line added to the table in the DB
+        $sql = '
+        SELECT *
+        FROM `player`
+        ORDER BY ID DESC LIMIT 1
+        ';
+        $pdo = Database::getPDO();
+        $pdoStatement = $pdo->query($sql);
+        $playerData = $pdoStatement->fetchObject(__CLASS__);
+        var_dump($playerData);
+        return $playerData;
+    }
 
     // method used to display the templates + page
     protected function show($viewName, $viewVars=array()) {
@@ -17,84 +52,53 @@ class MainController {
        // require __DIR__.'/../views/footer.tpl.php';
     }
 
-    protected function getCookies() {
-        $playerName = $_COOKIE['player_name'];
-        $randomName = $_COOKIE['random_name'];
-        $this->setPlayerName($playerName);
-        $this->setRandomName($randomName);
-        $this->insertNamesInDB();
-    }
-
-    protected function insertNamesInDB() {
-
-        // we cannot directly transmit php variables into the DB, thus, for the moment, we replace the values by "?"
-        $sql = "
-        INSERT INTO player (name, new_name) 
-        VALUES (?, ?)
-        ";
-
-        $pdo = Database::getPDO();
-
-        // this is where we can transmit the php variables into SQL
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->playerName, $this->randomName]);
-
-    }
-
     // method to display the home page
     public function homeAction() {
-
-        // if no cookie is set yet, we initialize them with an empty value
-        // the aim is to enable the transmission of cookies to the db without having to refresh the current page
-        /*if(!isset($_COOKIE['player_name'])){
-            $this->initializeCookies();
-        }*/
         if(isset($_COOKIE['player_name'])){
             $this->getCookies();
+            $this->getPlayerData();
         }
-
         $viewVars = [
             'title' => 'Homepage',
             'url' => '/'
         ];
         $this->show('home', $viewVars);
-
     }
 
 
     /**
-     * Get the value of playerName
+     * Get the value of name
      */ 
-    public function getPlayerName()
+    public function getName()
     {
-        return $this->playerName;
+        return $this->name;
     }
 
     /**
-     * Set the value of playerName
+     * Set the value of name
      *
      */ 
-    public function setPlayerName($playerName)
+    public function setName($name)
     {
-        $this->playerName = $playerName;
+        $this->name = $name;
 
     }
 
     /**
-     * Get the value of randomName
+     * Get the value of new_name
      */ 
-    public function getRandomName()
+    public function getNewName()
     {
-        return $this->randomName;
+        return $this->new_name;
     }
 
     /**
-     * Set the value of randomName
+     * Set the value of new_name
      *
      */ 
-    public function setRandomName($randomName)
+    public function setNewName($new_name)
     {
-        $this->randomName = $randomName;
+        $this->new_name = $new_name;
 
     }
 }
