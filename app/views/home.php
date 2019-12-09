@@ -50,6 +50,7 @@
                     // there are three parameters : name of the cookie, value of the cookie, number of days until the cookie should expire
                     setCookie('player_name', playerName, 1);
                     setCookie('random_name', randomName, 1);
+                    window.location.reload(true); 
 
                 }
         
