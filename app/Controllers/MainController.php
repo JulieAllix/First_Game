@@ -2,7 +2,7 @@
 
 namespace Breakfree\Controllers;
 
-use Breakfree\Models\Player;
+use Breakfree\Models\{Player, Scores};
 
 // the MainController class will get the necessary data and display the requested page
 class MainController {
@@ -21,6 +21,7 @@ class MainController {
             $playerModel = new Player();
             // enables to get the cookies data and insert it into the DB
             $playerModel->getCookies();
+            $playerModel->insertNamesInDB();
             $playerModel->getPlayerId();
             $playerId = $playerModel->getId();
             $playerModel->setCookie('player_id',  $playerId);
@@ -33,6 +34,10 @@ class MainController {
     }
 
     public function scoreAction(){
+        $scoreModel = new Scores();
+        $scoreModel->getCookies();
+        $scoreModel->insertScoreInDB();
+
         $viewVars = [
             'title' => 'Scores page',
             'url' => '/scores'

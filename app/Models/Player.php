@@ -14,7 +14,7 @@ class Player extends CoreModel {
         $new_name = $_COOKIE['random_name'];
         $this->setName($name);
         $this->setNewName($new_name);
-        $this->insertNamesInDB();
+        //$this->insertNamesInDB();
     }
 
     public function insertNamesInDB() {
