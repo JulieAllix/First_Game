@@ -1,11 +1,11 @@
 <header>
-    <h1 class="game-title">Scores for the level <?= $viewVars['level_name']?> : Top 20</a></h1>
+    <h1 class="game-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</a></h1>
 </header>
 
 <pre>
 <?php
 //var_dump($viewVars['score_data']);
-var_dump($viewVars['level_name']);
+//var_dump($viewVars['level_name']);
 ?>
 </pre>
 <main>

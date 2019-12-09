@@ -2,7 +2,7 @@
 
 namespace Breakfree\Controllers;
 
-use Breakfree\Models\{Player, Scores};
+use Breakfree\Models\{Player, Scores, Level};
 
 // the MainController class will get the necessary data and display the requested page
 class MainController {
@@ -39,9 +39,14 @@ class MainController {
         $scoreModel->getCookies();
         $scoreModel->insertScoreInDB();
         $scoreData = $scoreModel->findScoreDataFromDB();
+
+        // we need to find the level name
+        $levelModel = new Level();
+        $levelId = $_COOKIE["level_id"];
+        $levels = $levelModel->findAllByLevelId($levelId);
+        $levelName = $levels[0]['name'];
         
-        $scoreModel->setLevelName($this->level_id);
-        $levelName = $scoreModel->getLevelName();
+        //$levelName = $levelModel->name();
 
         $viewVars = [
             'title' => 'Scores page',
