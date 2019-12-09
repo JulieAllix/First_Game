@@ -10,6 +10,9 @@ class Scores extends CoreModel {
     protected $level_id;
     protected $player_id;
     protected $score;
+    protected $level_name;
+    protected $player_name;
+    protected $player_newname;
 
     public function getCookies() {
         $level_id = $_COOKIE['level_id'];
@@ -31,6 +34,31 @@ class Scores extends CoreModel {
         // this is where we can transmit the php variables into SQL
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->level_id, $this->player_id, $this->score]);
+    }
+
+    public function findScoreDataFromDB(){
+        $sql = '
+            SELECT `scores`.*,
+            level.name AS level_name, player.name AS player_name, player.new_name AS player_newname
+            FROM `scores`
+            JOIN `level`
+            ON scores.level_id = level.id
+            JOIN `player`
+            ON scores.player_id = player.id
+            ORDER BY score DESC
+            LIMIT 20
+        ';
+
+        // Database::getPDO() returns a PDO object representing the connexion to the database 
+        $pdo = Database::getPDO();
+
+        // We execute the request in order to get our results
+        $pdoStatement = $pdo->query($sql);
+
+        // We will get the results as a table of objects from the 'Character' class
+        $scoreData = $pdoStatement->fetchAll(PDO::FETCH_CLASS,__CLASS__);
+
+        return $scoreData;
     }
 
     /**
@@ -82,5 +110,26 @@ class Scores extends CoreModel {
     public function setScore($score)
     {
         $this->score = $score;
+    }
+
+    /**
+     * Get the value of level_name
+     */ 
+    public function getLevelName()
+    {
+        return $this->level_name;
+    }
+
+    /**
+     * Set the value of level_name
+     *
+     * @return  self
+     */ 
+    public function setLevelName($level_id)
+    {
+        
+        $this->level_name = $level_name;
+
+        return $this;
     }
 }

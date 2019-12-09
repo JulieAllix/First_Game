@@ -35,12 +35,19 @@ class MainController {
 
     public function scoreAction(){
         $scoreModel = new Scores();
+
         $scoreModel->getCookies();
         $scoreModel->insertScoreInDB();
+        $scoreData = $scoreModel->findScoreDataFromDB();
+        
+        $scoreModel->setLevelName($this->level_id);
+        $levelName = $scoreModel->getLevelName();
 
         $viewVars = [
             'title' => 'Scores page',
-            'url' => '/scores'
+            'url' => '/scores',
+            'score_data' => $scoreData,
+            'level_name' => $levelName
         ];
         $this->show('scores', $viewVars);
     }
