@@ -7,6 +7,13 @@ class LevelController {
 
     // method to display the very easy page
     public function veryEasyAction() {
+
+        if(isset($_COOKIE['score'])){
+            // enables to get the cookies data and insert it into the DB
+            $this->getCookies();
+            $this->getPlayerData();
+        }
+
         $viewVars = [
             'title' => 'Very easy level',
             'url' => '/very-easy'

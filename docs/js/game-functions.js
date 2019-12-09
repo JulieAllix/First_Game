@@ -112,8 +112,11 @@ var app = {
                     score = score + scorePerHit;
                     /* if all available points have been collected, we will display a winning message */
                         if(score == brickRowCount*brickColumnCount*scorePerHit) {
+                            appGen.setCookie('score', score, 1);
                             alert("YOU WIN, CONGRATULATIONS! Total points : " + score);
-                            document.location.reload();
+                            // we set cookies in order to transmit the js score variable to php (to transmit it to the DB afterwards)
+                            // there are three parameters : name of the cookie, value of the cookie, number of days until the cookie should expire
+                            window.location.reload();
                         }
                     }
                 }
@@ -166,8 +169,10 @@ var app = {
             else {
                 lives--;
                 if(!lives) {
-                    alert("GAME OVER");
-                    document.location.reload();
+                    appGen.setCookie('score', score, 1);
+                   
+                    alert("GAME OVER. Total points : " + score);
+                    window.location.reload();
                 }
                 // if there are still some lives left, then the position of the ball and the paddle are reset, along with the movement of the ball
                 else {

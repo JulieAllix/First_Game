@@ -17,3 +17,5 @@
                 canvas { display: block; margin: 10% auto; }
             </style>  
         </head>
+        <body>
+            <script src="../docs/js/general-functions.js"></script>

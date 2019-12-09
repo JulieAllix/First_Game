@@ -55,6 +55,7 @@ class MainController {
     // method to display the home page
     public function homeAction() {
         if(isset($_COOKIE['player_name'])){
+            // enables to get the cookies data and insert it into the DB
             $this->getCookies();
             $this->getPlayerData();
         }
