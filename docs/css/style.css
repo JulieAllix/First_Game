@@ -150,13 +150,14 @@ a, a:hover, a:visited, a:focus {
 }
 
 .table-header {
+    border:none;
     font-family: 'Alatsi', sans-serif;
     background-color: var(--strong-color);
     color: var(--secondary-color);
     text-shadow: 1px 1px black;
 }
 
-th, td {
+th, td, .table-header {
     text-align: center;
     border: 2px solid var(--strong-color); 
 }

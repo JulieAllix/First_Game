@@ -6,10 +6,12 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
             <link rel="stylesheet" href="../docs/css/reset.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <link href="https://fonts.googleapis.com/css?family=Tomorrow:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            
             <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap&subset=latin-ext" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Abel|Alatsi|Arimo|Fjalla+One|Libre+Franklin|Lobster|Nunito|Oxygen|Varela+Round|Work+Sans|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Alatsi|Lobster|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+
             <link rel="stylesheet" href="../docs/css/style.css">
 
             <title>I want to break free</title>

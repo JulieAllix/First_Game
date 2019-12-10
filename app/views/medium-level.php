@@ -56,7 +56,7 @@
         var score = 0;
         var scorePerHit = 10;
         var lives = 2;
-        var scoreStyle = "16px Tomorrow";
+        var scoreLivesStyle = "16px Alatsi";
         var xScore = 8;
         var yScore = 20;
 

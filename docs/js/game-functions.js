@@ -80,14 +80,14 @@ var app = {
     },
 
     drawScore: function() {
-        ctx.font = scoreStyle;
+        ctx.font = scoreLivesStyle;
         ctx.fillStyle = elementsColor;
         // three parameters : text, coordinates where the text will be placed on the canvas
         ctx.fillText("Score: "+score, xScore, yScore);
     },
 
     drawLives: function() {
-        ctx.font = "16px Arial";
+        ctx.font = scoreLivesStyle;
         ctx.fillStyle = elementsColor;
         ctx.fillText("Lives: "+lives, canvas.width-65, 20);
     },
