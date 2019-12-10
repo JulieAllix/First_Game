@@ -12,8 +12,8 @@
                 <button class="btn btn-primary border-0"><a class="level-link" href="./hardcore">HARDCOOOORE !</a></button>
             </div>
 
-            <div class="btn-change-name">
-                <button type="button" class="namerequest" id="change-name-button" >New player</button>
+            <div class="minor-btn-div">
+                <button type="button" class="minor-btn" id="change-name-button" >New player</button>
             </div>
     </div>
 </main>

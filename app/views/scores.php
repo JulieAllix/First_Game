@@ -1,5 +1,5 @@
 <header>
-    <h1 class="game-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</a></h1>
+    <h1 class="scores-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</a></h1>
 </header>
 
 <pre>
@@ -28,14 +28,20 @@
             endforeach ?>
         </table>
     </div>
+    <div class="minor-btn-div">
+        <button type="button" class="minor-btn" id="change-name-button" >Home</button>
+        <button type="button" class="minor-btn" id="change-name-button" >Try again</button>
+    </div>
+    <!--
     <nav class="navbar">
         <ul class="navbar-ul">
             <li class="navbar-item">
-            <a href="./" class="navbar-link">Home</a>
+            <a href="./" class="minor-btn">Home</a>
             </li>
             <li class="navbar-item">
-            <a href="" class="navbar-link">Try again</a>
+            <a href="" class="minor-btn">Try again</a>
             </li>
         </ul>
     </nav>
+            -->
 </main>
