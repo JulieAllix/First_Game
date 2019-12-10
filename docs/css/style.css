@@ -14,7 +14,6 @@ test {
 }
 */
 
-
 :root {
     --primary-color: #23232D;
     --secondary-color: #FBEDE9;
@@ -31,16 +30,16 @@ test {
 }
 */
 
-
 /* All pages */
-
 
 body {
     background-color : var(--primary-color);
 }
 
 #myCanvas {
-    background-color : var(--secondary-color);  
+    background-color : var(--secondary-color);
+    margin-top: 5em;  
+    margin-bottom: 2em;
 }
 
 a, a:hover, a:visited, a:focus {
@@ -59,7 +58,7 @@ a, a:hover, a:visited, a:focus {
 }
 
 .wrapper{
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
 }
@@ -72,6 +71,10 @@ a, a:hover, a:visited, a:focus {
     text-align: center;
     display: block;
     margin-top: 1em;
+}
+
+#randomName {
+    color: var(--strong-color);
 }
 
 .btn-group-vertical {
@@ -93,14 +96,16 @@ a, a:hover, a:visited, a:focus {
 
 .btn-primary:hover, .minor-btn:hover {
     background-color : var(--strong-color);
-  ;
 }
 
 .level-link:visited, .level-link:hover {
     color: var(--primary-color);
 }
 
-.minor-btn-div{
+.wrapper-home-btn {
+    height: 6vw;
+}
+.minor-btn-div {
     font-family:'Lobster', cursive;;
     display: flex;
     justify-content: center;
@@ -114,7 +119,7 @@ a, a:hover, a:visited, a:focus {
     border: none;
     border-radius: 7px;
     padding: .3em;
-    margin: 1em 1em 2em 1em;
+    margin: 1em 1em 0em 1em;
 }
 
 /* Game */
@@ -210,18 +215,14 @@ tbody td {
     text-shadow: 1px 1px black;
 }
 
-/*
-a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
-    color: #F9F9F9;
-}
+/* Footer */
 
-a:link, a:visited {
-    text-decoration: none;
-    color: #F9F9F9;
-}
-
-a:hover {
+.footer-info{
+    margin-top: 1em;
+    text-align: center;
     color: var(--strong-color);
 }
-*/
+
+.footer-info > a{
+    color: var(--strong-color);
+}

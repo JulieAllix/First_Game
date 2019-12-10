@@ -24,6 +24,6 @@ var appGen = {
         appGen.setCookie('player_name', playerName, 1);
         appGen.setCookie('random_name', randomName, 1);
         window.location.reload(true); 
-    }
+    },
 
 }

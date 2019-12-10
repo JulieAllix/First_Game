@@ -2,11 +2,6 @@
     <h1 class="scores-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</a></h1>
 </header>
 
-<pre>
-<?php
-//var_dump($viewVars['score_data']);
-?>
-</pre>
 <main>
     <div class="wrapper-table">
         <table class="table">
@@ -29,19 +24,26 @@
         </table>
     </div>
     <div class="minor-btn-div">
-        <button type="button" class="minor-btn" id="change-name-button" >Home</button>
-        <button type="button" class="minor-btn" id="change-name-button" >Try again</button>
-    </div>
-    <!--
-    <nav class="navbar">
-        <ul class="navbar-ul">
-            <li class="navbar-item">
-            <a href="./" class="minor-btn">Home</a>
-            </li>
-            <li class="navbar-item">
-            <a href="" class="minor-btn">Try again</a>
-            </li>
-        </ul>
-    </nav>
+        <button type="button" class="minor-btn" id="home-btn" >Home</button>
+        <!--
+        <button type="button" class="minor-btn" id="try-again-btn" >Try again</button>
             -->
+    </div>
+
 </main>
+
+
+<script>
+
+    // We add an event listener on the click of the button that enables to change the name
+    var homeButton = document.getElementById('home-btn');
+    homeButton.addEventListener('click', function(){
+        window.location.href = '.'
+    }); 
+    // We add an event listener on the click of the score button that enable to reach the scores page
+    var tryAgainButton = document.getElementById('try-again-btn');
+    tryAgainButton.addEventListener('click', function(){
+    window.location.href = 'scores'
+    }); 
+
+</script>

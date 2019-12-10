@@ -8,40 +8,12 @@ use Breakfree\Models\Level;
 class LevelController {
 
     protected $score;
-/*
-    protected function getCookies() {
-        $score = $_COOKIE['score'];
-        $this->setScore($score);
-        $this->insertDataInDB();
-    }
-
-    protected function insertDataInDB() {
-        // we cannot directly transmit php variables into the DB, thus, for the moment, we replace the values by "?"
-        $sql = "
-        INSERT INTO player (name, new_name) 
-        VALUES (?, ?)
-        ";
-        $pdo = Database::getPDO();
-        // this is where we can transmit the php variables into SQL
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->name, $this->new_name]);
-    }
-
-    */
 
     // method to display the very easy page
     public function veryEasyAction() {
 
         $levelModel = new Level();
         $levelModel->setCookie('level_id','1');
-
-/*
-        if(isset($_COOKIE['score'])){
-            // enables to get the cookies data and insert it into the DB
-            $this->getCookies();
-            $this->getPlayerData();
-        }
-        */
 
         $viewVars = [
             'title' => 'Very easy level',
@@ -91,11 +63,13 @@ class LevelController {
 
     // method used to display the templates + page
     private function show($viewName, $viewVars) {
+        $absoluteUrl = isset($_SERVER['BASE_URI']) ? $_SERVER['BASE_URI'] : '';
         //var_dump($viewName);
         require __DIR__.'/../views/header.tpl.php';
         require __DIR__.'/../views/header-level.tpl.php';
         require __DIR__.'/../views/'.$viewName.'.php';
-       // require __DIR__.'/../views/footer.tpl.php';
+        require __DIR__.'/../views/footer-level.tpl.php';
+        require __DIR__.'/../views/footer.tpl.php';
     }
 
     /**
