@@ -1,5 +1,5 @@
 <header>
-    <h1 class="scores-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</a></h1>
+    <h1 class="scores-title">Scores for the <?= $viewVars['level_name'] ?>: Top 20</h1>
 </header>
 
 <main>

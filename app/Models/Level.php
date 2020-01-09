@@ -22,6 +22,18 @@ class Level extends CoreModel {
         return $levels;
     }
 
+    public function findAllLevels(){
+        // We write the SQL request that will return all the information about the levels 
+        $sql = '
+        SELECT *
+        FROM `level`
+        ';
+        $pdo = Database::getPDO();
+        $pdoStatement = $pdo->query($sql);
+        $levels = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        return $levels;
+    }
+
     /**
      * Get the value of name
      */ 

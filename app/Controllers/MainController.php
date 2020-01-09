@@ -10,9 +10,9 @@ class MainController {
     // method used to display the templates + page
     protected function show($viewName, $viewVars=array()) {
         $absoluteUrl = isset($_SERVER['BASE_URI']) ? $_SERVER['BASE_URI'] : '';
-        require __DIR__.'/../views/header.tpl.php';
+        require __DIR__.'/../views/headers-footers/header.tpl.php';
         require __DIR__.'/../views/'.$viewName.'.php';
-        require __DIR__.'/../views/footer.tpl.php';
+        require __DIR__.'/../views/headers-footers/footer.tpl.php';
     }
 
     // method to display the home page
@@ -65,5 +65,28 @@ class MainController {
             exit();
         }
     }
+
+    public function allScoreAction(){
+        
+            // we need to find the level name
+            $levelModel = new Level();
+            $levels = $levelModel->findAllLevels();
+            $numberOfLevels = count($levels);
+            
+            
+            //$levelName = $levels[0]['name'];
+            
+            // here we need to extract the scores from the DB for a specific level id
+            //$scoreModel = new Scores();
+            //$scoreData = $scoreModel->findScoreByLevelId($levelId);
+
+            $viewVars = [
+                'title' => 'All scores page',
+                'url' => '/all-scores',
+                'score_data' => $scoreData,
+                'levels' => $levels
+            ];
+            $this->show('scores', $viewVars);
+        }
 
 }

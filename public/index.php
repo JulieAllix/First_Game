@@ -79,6 +79,16 @@
         'Scores'
     );
 
+    $router->map(
+        'GET',
+        '/all-scores', 
+        [
+            'action' => 'AllScoreAction',
+            'controller' => '\Breakfree\Controllers\MainController'
+        ],
+        'All Scores'
+    );
+
     // once the routes are added to AltoRouter, we check if there is a route matching the requested page
     $match = $router->match();
     //var_dump($match);

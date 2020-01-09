@@ -65,11 +65,11 @@ class LevelController {
     private function show($viewName, $viewVars) {
         $absoluteUrl = isset($_SERVER['BASE_URI']) ? $_SERVER['BASE_URI'] : '';
         //var_dump($viewName);
-        require __DIR__.'/../views/header.tpl.php';
-        require __DIR__.'/../views/header-level.tpl.php';
-        require __DIR__.'/../views/'.$viewName.'.php';
-        require __DIR__.'/../views/footer-level.tpl.php';
-        require __DIR__.'/../views/footer.tpl.php';
+        require __DIR__.'/../views/headers-footers/header.tpl.php';
+        require __DIR__.'/../views/headers-footers/header-level.tpl.php';
+        require __DIR__.'/../views/level/'.$viewName.'.php';
+        require __DIR__.'/../views/headers-footers/footer-level.tpl.php';
+        require __DIR__.'/../views/headers-footers/footer.tpl.php';
     }
 
     /**

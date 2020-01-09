@@ -14,7 +14,7 @@
 
             <div class="minor-btn-div">
                 <button type="button" class="minor-btn" id="change-name-btn" >New player</button>
-                <button type="button" class="minor-btn" id="scores-btn" >Scores</button>
+                <!-- <button type="button" class="minor-btn" id="scores-btn" >Scores</button> -->
             </div>
     </div>
 </main>
@@ -56,7 +56,7 @@
     // We add an event listener on the click of the score button that enable to reach the scores page
     var scoresButton = document.getElementById('scores-btn');
     scoresButton.addEventListener('click', function(){
-    window.location.href = 'scores'
+    window.location.href = 'all-scores'
     }); 
 
 </script>

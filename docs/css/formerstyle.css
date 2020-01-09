@@ -1,0 +1,228 @@
+/* Themes */
+
+ /* Interesting colors 
+test {
+    color: #23232D;
+    color: rgb(245, 129, 97);
+    color: #F2F7FD;
+    color: #FD8F71;
+    color: #FD8F71;
+    color: #C2A061;
+     gold 
+    color: #0A1419;
+    color: #FA6971;
+}
+*/
+
+:root {
+    --primary-color: #23232D;
+    --secondary-color: #FBEDE9;
+    --third-color: white;
+    --strong-color: #FA6971;
+}
+
+/*
+[data-theme="alternative"] {
+    --primary-color: #1E252D;
+    --secondary-color:  #E7E9E6;
+    --third-color: rgb(69, 132, 139);
+    --strong-color: #57A7B0;
+}
+*/
+
+/* All pages */
+
+body {
+    background-color : var(--primary-color);
+}
+
+#myCanvas {
+    background-color : var(--secondary-color);
+    margin-top: 5em;  
+    margin-bottom: 2em;
+}
+
+a, a:hover, a:visited, a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+/* Index */
+
+.game-title {
+    font-family: 'Bebas Neue', cursive;
+    color: var(--strong-color);
+    font-size: 3.3em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.wrapper{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.level-title {
+    color: var(--third-color);
+    /*text-shadow: 1px 1px black;*/
+    font-family: 'Lobster', cursive;
+    font-size: 2.2em;
+    text-align: center;
+    display: block;
+    margin-top: 1em;
+}
+
+#randomName {
+    color: var(--strong-color);
+}
+
+.btn-group-vertical {
+    margin : 5em auto;
+}
+
+.btn {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.btn-primary {
+    background-color : var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 2em;
+    /*text-shadow: 1px 1px grey;*/
+    margin-bottom: .5em;
+    border-radius: 10px;
+}
+
+.btn-primary:hover, .minor-btn:hover {
+    background-color : var(--strong-color);
+}
+
+.level-link:visited, .level-link:hover {
+    color: var(--primary-color);
+}
+
+.wrapper-home-btn {
+    height: 6vw;
+}
+.minor-btn-div {
+    font-family:'Lobster', cursive;;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.minor-btn {
+    background-color : var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 7px;
+    padding: .3em;
+    margin: 1em 1em 0em 1em;
+}
+
+/* Game */
+
+.index-link {
+    color: var(--strong-color);
+}
+
+.index-link:hover {
+    color: var(--third-color);
+}
+
+/* Scores */
+
+.scores-title {
+    font-family: 'Lobster', cursive;
+    color: var(--strong-color);
+    font-size: 3.3em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.wrapper-table {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 70vw;
+    display:flex;
+    margin-top: 2em;
+    justify-content: center;
+}
+
+.table-header {
+    border:none;
+    font-family: 'Alatsi', sans-serif;
+    background-color: var(--strong-color);
+    color: var(--secondary-color);
+    text-shadow: 1px 1px black;
+}
+
+th, td, .table-header {
+    text-align: center;
+    border: 2px solid var(--strong-color); 
+}
+
+th {
+    padding: .4em;
+}
+
+tbody td {
+    vertical-align: middle;
+    padding: .4em;
+}
+
+.table-header, .table-content {
+    font-family: 'Alatsi', sans-serif;
+    color: var(--secondary-color);
+}
+
+.table-header {
+    font-size: 1.1em;
+}
+
+.table-content {
+    font-size: 1em;
+}
+
+/* Navbar scores */
+
+.navbar {
+    width: 70vw;
+    display:flex;
+    margin: 1em auto;
+    justify-content: center;
+    border-radius: .3em;
+    padding: .2em;
+}
+
+.navbar-ul {
+    width: 20vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar-item {
+    color: var(--secondary-color);
+    padding: .5em;
+    border-radius: .3em;
+    font-size: 1.1em;
+    text-shadow: 1px 1px black;
+}
+
+/* Footer */
+
+.footer-info{
+    margin-top: 1em;
+    text-align: center;
+    color: var(--strong-color);
+}
+
+.footer-info > a{
+    color: var(--strong-color);
+}
